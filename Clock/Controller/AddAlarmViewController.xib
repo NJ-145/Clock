@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddAlarmViewController" customModule="Clock" customModuleProvider="target">
+            <connections>
+                <outlet property="dpkClockTime" destination="bCb-SN-UTT" id="KLm-MI-PbB"/>
+                <outlet property="tbvInformation" destination="0hl-KY-nPa" id="43R-5P-MTb"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="wheels" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCb-SN-UTT">
+                    <rect key="frame" x="36.666666666666657" y="59" width="320" height="303.66666666666669"/>
+                    <color key="backgroundColor" systemColor="systemBlueColor"/>
+                    <color key="tintColor" systemColor="labelColor"/>
+                    <date key="date" timeIntervalSinceReferenceDate="749357526.71126795">
+                        <!--2024-09-30 02:52:06 +0000-->
+                    </date>
+                    <connections>
+                        <action selector="datePicker:" destination="-1" eventType="valueChanged" id="8JW-4K-NZG"/>
+                    </connections>
+                </datePicker>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0hl-KY-nPa">
+                    <rect key="frame" x="36.666666666666657" y="331" width="320" height="227.66666666666663"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="0hl-KY-nPa" firstAttribute="centerX" secondItem="bCb-SN-UTT" secondAttribute="centerX" id="4Ov-nn-i72"/>
+                <constraint firstItem="bCb-SN-UTT" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="height" multiplier="0.4" id="HAC-uo-73V"/>
+                <constraint firstItem="0hl-KY-nPa" firstAttribute="height" secondItem="bCb-SN-UTT" secondAttribute="height" multiplier="0.75" id="NaP-4t-89a"/>
+                <constraint firstItem="bCb-SN-UTT" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Q1s-yY-gcF"/>
+                <constraint firstItem="0hl-KY-nPa" firstAttribute="width" secondItem="bCb-SN-UTT" secondAttribute="width" id="gtg-ae-OZF"/>
+                <constraint firstItem="bCb-SN-UTT" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="sUA-ff-GwA"/>
+                <constraint firstItem="bCb-SN-UTT" firstAttribute="width" secondItem="fnl-2z-Ty3" secondAttribute="width" multiplier="0.814249" id="xmo-e7-WGK"/>
+                <constraint firstItem="0hl-KY-nPa" firstAttribute="top" secondItem="bCb-SN-UTT" secondAttribute="bottom" multiplier="0.65" constant="95.329999999999998" id="z73-Ab-7WX"/>
+            </constraints>
+            <point key="canvasLocation" x="123" y="21"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
