@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddAlarmViewController" customModule="Clock" customModuleProvider="target">
             <connections>
+                <outlet property="btnDelete" destination="cFC-Yl-wnO" id="8FH-lT-wif"/>
                 <outlet property="dpkClockTime" destination="bCb-SN-UTT" id="KLm-MI-PbB"/>
                 <outlet property="tbvInformation" destination="0hl-KY-nPa" id="43R-5P-MTb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -20,6 +21,10 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0hl-KY-nPa">
+                    <rect key="frame" x="36.666666666666657" y="331" width="320" height="227.66666666666663"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" style="wheels" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bCb-SN-UTT">
                     <rect key="frame" x="36.666666666666657" y="59" width="320" height="303.66666666666669"/>
                     <color key="backgroundColor" systemColor="systemBlueColor"/>
@@ -31,21 +36,30 @@
                         <action selector="datePicker:" destination="-1" eventType="valueChanged" id="8JW-4K-NZG"/>
                     </connections>
                 </datePicker>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0hl-KY-nPa">
-                    <rect key="frame" x="36.666666666666657" y="331" width="320" height="227.66666666666663"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cFC-Yl-wnO">
+                    <rect key="frame" x="36.666666666666657" y="605" width="320" height="41"/>
+                    <color key="tintColor" systemColor="systemRedColor"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="刪除鬧鐘"/>
+                    <connections>
+                        <action selector="deletePressed:" destination="-1" eventType="touchUpInside" id="63Q-d3-4od"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="0hl-KY-nPa" firstAttribute="centerX" secondItem="bCb-SN-UTT" secondAttribute="centerX" id="4Ov-nn-i72"/>
+                <constraint firstItem="cFC-Yl-wnO" firstAttribute="top" secondItem="0hl-KY-nPa" secondAttribute="bottom" constant="46.333333333333371" id="CRM-Dm-sA9"/>
                 <constraint firstItem="bCb-SN-UTT" firstAttribute="height" secondItem="fnl-2z-Ty3" secondAttribute="height" multiplier="0.4" id="HAC-uo-73V"/>
                 <constraint firstItem="0hl-KY-nPa" firstAttribute="height" secondItem="bCb-SN-UTT" secondAttribute="height" multiplier="0.75" id="NaP-4t-89a"/>
                 <constraint firstItem="bCb-SN-UTT" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Q1s-yY-gcF"/>
+                <constraint firstItem="cFC-Yl-wnO" firstAttribute="centerX" secondItem="0hl-KY-nPa" secondAttribute="centerX" id="fFm-mL-HsY"/>
                 <constraint firstItem="0hl-KY-nPa" firstAttribute="width" secondItem="bCb-SN-UTT" secondAttribute="width" id="gtg-ae-OZF"/>
+                <constraint firstItem="cFC-Yl-wnO" firstAttribute="width" secondItem="0hl-KY-nPa" secondAttribute="width" id="peF-im-tJq"/>
                 <constraint firstItem="bCb-SN-UTT" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="sUA-ff-GwA"/>
                 <constraint firstItem="bCb-SN-UTT" firstAttribute="width" secondItem="fnl-2z-Ty3" secondAttribute="width" multiplier="0.814249" id="xmo-e7-WGK"/>
+                <constraint firstItem="cFC-Yl-wnO" firstAttribute="height" secondItem="0hl-KY-nPa" secondAttribute="height" multiplier="0.18" id="y9d-co-393"/>
                 <constraint firstItem="0hl-KY-nPa" firstAttribute="top" secondItem="bCb-SN-UTT" secondAttribute="bottom" multiplier="0.65" constant="95.329999999999998" id="z73-Ab-7WX"/>
             </constraints>
             <point key="canvasLocation" x="123" y="21"/>
@@ -59,7 +73,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

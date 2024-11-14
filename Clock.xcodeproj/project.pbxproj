@@ -13,6 +13,12 @@
 		7C644E3C2CBE66C90079E305 /* SoundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C644E392CBE66C90079E305 /* SoundViewController.swift */; };
 		7C644E3F2CBE67080079E305 /* SoundTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C644E3E2CBE67080079E305 /* SoundTableViewCell.xib */; };
 		7C644E402CBE67080079E305 /* SoundTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C644E3D2CBE67080079E305 /* SoundTableViewCell.swift */; };
+		7C96EADF2CC27CFA00BA116B /* ClockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C96EADD2CC27CFA00BA116B /* ClockTableViewCell.swift */; };
+		7C96EAE02CC27CFA00BA116B /* ClockTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C96EADE2CC27CFA00BA116B /* ClockTableViewCell.xib */; };
+		7CA9009D2CE3630C0059616B /* SleepTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA9009B2CE3630C0059616B /* SleepTableViewCell.swift */; };
+		7CA9009E2CE3630C0059616B /* SleepTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CA9009C2CE3630C0059616B /* SleepTableViewCell.xib */; };
+		7CA900A12CE3635F0059616B /* SleepClockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA9009F2CE3635F0059616B /* SleepClockTableViewCell.swift */; };
+		7CA900A22CE3635F0059616B /* SleepClockTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CA900A02CE3635F0059616B /* SleepClockTableViewCell.xib */; };
 		7CAB318B2CAFE268003D28D1 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CAB318A2CAFE268003D28D1 /* Data.swift */; };
 		7CB099792CABF4A500936695 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB099772CABF4A500936695 /* TabBarViewController.swift */; };
 		7CB0997A2CABF4A500936695 /* TabBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CB099782CABF4A500936695 /* TabBarViewController.xib */; };
@@ -22,6 +28,8 @@
 		7CB099822CABFAA500936695 /* StopWatchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CB099802CABFAA500936695 /* StopWatchViewController.xib */; };
 		7CB099852CABFACA00936695 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB099832CABFACA00936695 /* TimerViewController.swift */; };
 		7CB099862CABFACA00936695 /* TimerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CB099842CABFACA00936695 /* TimerViewController.xib */; };
+		7CB5271A2CE47B12009FCEC4 /* OtherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CB527192CE47B12009FCEC4 /* OtherTableViewCell.xib */; };
+		7CB5271B2CE47B12009FCEC4 /* OtherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB527182CE47B12009FCEC4 /* OtherTableViewCell.swift */; };
 		7CC6601B2CB3DAE4000A519D /* WeekViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC660192CB3DAE4000A519D /* WeekViewController.swift */; };
 		7CC6601C2CB3DAE4000A519D /* WeekViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CC6601A2CB3DAE4000A519D /* WeekViewController.xib */; };
 		7CC6601F2CB3E785000A519D /* WeekTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC6601D2CB3E785000A519D /* WeekTableViewCell.swift */; };
@@ -76,6 +84,12 @@
 		7C644E3A2CBE66C90079E305 /* SoundViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SoundViewController.xib; sourceTree = "<group>"; };
 		7C644E3D2CBE67080079E305 /* SoundTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundTableViewCell.swift; sourceTree = "<group>"; };
 		7C644E3E2CBE67080079E305 /* SoundTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SoundTableViewCell.xib; sourceTree = "<group>"; };
+		7C96EADD2CC27CFA00BA116B /* ClockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockTableViewCell.swift; sourceTree = "<group>"; };
+		7C96EADE2CC27CFA00BA116B /* ClockTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClockTableViewCell.xib; sourceTree = "<group>"; };
+		7CA9009B2CE3630C0059616B /* SleepTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepTableViewCell.swift; sourceTree = "<group>"; };
+		7CA9009C2CE3630C0059616B /* SleepTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SleepTableViewCell.xib; sourceTree = "<group>"; };
+		7CA9009F2CE3635F0059616B /* SleepClockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepClockTableViewCell.swift; sourceTree = "<group>"; };
+		7CA900A02CE3635F0059616B /* SleepClockTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SleepClockTableViewCell.xib; sourceTree = "<group>"; };
 		7CAB318A2CAFE268003D28D1 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		7CB099772CABF4A500936695 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		7CB099782CABF4A500936695 /* TabBarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarViewController.xib; sourceTree = "<group>"; };
@@ -85,6 +99,8 @@
 		7CB099802CABFAA500936695 /* StopWatchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StopWatchViewController.xib; sourceTree = "<group>"; };
 		7CB099832CABFACA00936695 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		7CB099842CABFACA00936695 /* TimerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimerViewController.xib; sourceTree = "<group>"; };
+		7CB527182CE47B12009FCEC4 /* OtherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherTableViewCell.swift; sourceTree = "<group>"; };
+		7CB527192CE47B12009FCEC4 /* OtherTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OtherTableViewCell.xib; sourceTree = "<group>"; };
 		7CC660192CB3DAE4000A519D /* WeekViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekViewController.swift; sourceTree = "<group>"; };
 		7CC6601A2CB3DAE4000A519D /* WeekViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeekViewController.xib; sourceTree = "<group>"; };
 		7CC6601D2CB3E785000A519D /* WeekTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTableViewCell.swift; sourceTree = "<group>"; };
@@ -327,6 +343,14 @@
 				7CD346CC2CAAC2900081DE1A /* TagTableViewCell.xib */,
 				7CD346CF2CAAC2E00081DE1A /* RemLatTableViewCell.swift */,
 				7CD346D02CAAC2E00081DE1A /* RemLatTableViewCell.xib */,
+				7C96EADD2CC27CFA00BA116B /* ClockTableViewCell.swift */,
+				7C96EADE2CC27CFA00BA116B /* ClockTableViewCell.xib */,
+				7CA9009B2CE3630C0059616B /* SleepTableViewCell.swift */,
+				7CA9009C2CE3630C0059616B /* SleepTableViewCell.xib */,
+				7CA9009F2CE3635F0059616B /* SleepClockTableViewCell.swift */,
+				7CA900A02CE3635F0059616B /* SleepClockTableViewCell.xib */,
+				7CB527182CE47B12009FCEC4 /* OtherTableViewCell.swift */,
+				7CB527192CE47B12009FCEC4 /* OtherTableViewCell.xib */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -444,9 +468,13 @@
 				7CD346D22CAAC2E00081DE1A /* RemLatTableViewCell.xib in Resources */,
 				7CB0997E2CABFA4900936695 /* WorldViewController.xib in Resources */,
 				7C644E3F2CBE67080079E305 /* SoundTableViewCell.xib in Resources */,
+				7CB5271A2CE47B12009FCEC4 /* OtherTableViewCell.xib in Resources */,
+				7CA900A22CE3635F0059616B /* SleepClockTableViewCell.xib in Resources */,
 				7C644E3B2CBE66C90079E305 /* SoundViewController.xib in Resources */,
+				7CA9009E2CE3630C0059616B /* SleepTableViewCell.xib in Resources */,
 				7CD346CA2CAAC2520081DE1A /* RepeatTableViewCell.xib in Resources */,
 				7CDBC30F2CA54C34002876C4 /* AddAlarmViewController.xib in Resources */,
+				7C96EAE02CC27CFA00BA116B /* ClockTableViewCell.xib in Resources */,
 				7CDBC3042CA17A2D002876C4 /* SecondViewController.xib in Resources */,
 				7CDBC2D52CA177ED002876C4 /* Assets.xcassets in Resources */,
 				7CC660202CB3E785000A519D /* WeekTableViewCell.xib in Resources */,
@@ -583,6 +611,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CB5271B2CE47B12009FCEC4 /* OtherTableViewCell.swift in Sources */,
 				7CC6601B2CB3DAE4000A519D /* WeekViewController.swift in Sources */,
 				7CD346C92CAAC2520081DE1A /* RepeatTableViewCell.swift in Sources */,
 				7CDBC3052CA17A2D002876C4 /* SecondViewController.swift in Sources */,
@@ -590,8 +619,10 @@
 				7CB0997D2CABFA4900936695 /* WorldViewController.swift in Sources */,
 				7CB099852CABFACA00936695 /* TimerViewController.swift in Sources */,
 				7CD346CD2CAAC2900081DE1A /* TagTableViewCell.swift in Sources */,
+				7CA9009D2CE3630C0059616B /* SleepTableViewCell.swift in Sources */,
 				7CEE457F2CBFB82400A3E762 /* User.swift in Sources */,
 				7CB099812CABFAA500936695 /* StopWatchViewController.swift in Sources */,
+				7C96EADF2CC27CFA00BA116B /* ClockTableViewCell.swift in Sources */,
 				7CB099792CABF4A500936695 /* TabBarViewController.swift in Sources */,
 				7CAB318B2CAFE268003D28D1 /* Data.swift in Sources */,
 				7CD346D12CAAC2E00081DE1A /* RemLatTableViewCell.swift in Sources */,
@@ -600,6 +631,7 @@
 				7CDBC2CC2CA177EA002876C4 /* AppDelegate.swift in Sources */,
 				7CC6601F2CB3E785000A519D /* WeekTableViewCell.swift in Sources */,
 				7CDBC2CE2CA177EA002876C4 /* SceneDelegate.swift in Sources */,
+				7CA900A12CE3635F0059616B /* SleepClockTableViewCell.swift in Sources */,
 				7C644E402CBE67080079E305 /* SoundTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

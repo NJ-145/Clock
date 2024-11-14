@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import UserNotifications
 
 class AddAlarmViewController: UIViewController {
     
@@ -15,13 +16,21 @@ class AddAlarmViewController: UIViewController {
     @IBOutlet var tbvInformation: UITableView!
     @IBOutlet var dpkClockTime: UIDatePicker!
     
+    @IBOutlet var btnDelete: UIButton!
     
     // MARK: - Property
-    var selectedWeekText: String = "永不" // 初始顯示為 "永不"
+    var selectedWeekText: String = "永不" // 初始顯示為""
     var wek: [String] = []
     var soundData : String = sound_value.shared.select
-    var selectedSound: String = "放射(預設值)"
+    var selectedSound: String = "放射"
     static var reminderLater: Bool = true
+    var tagName: String = "鬧鐘"
+    weak var delegate: AddAlarmViewControllerDelegate?
+    var alarmTime: Date?
+    // 用來判斷是否為編輯模式
+    var isEditingMode: Bool = false
+    // 編輯模式下的鬧鐘資料
+    var editingAlarm: ClockTime?
     
     
     // MARK: - LifeCycle
@@ -31,6 +40,12 @@ class AddAlarmViewController: UIViewController {
         tbvInformation.reloadData()
         setNavigation()
         setUi()
+        editMode()
+    }
+    
+    // 收鍵盤
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     
     // MARK: - UI Settings
@@ -50,9 +65,14 @@ class AddAlarmViewController: UIViewController {
         tbvInformation.delegate = self
         tbvInformation.dataSource = self
         
-        tbvInformation.layer.cornerRadius = 15 // 設定圓角
+        tbvInformation.layer.cornerRadius = 10 // 設定圓角
         tbvInformation.layer.masksToBounds = true
         tbvInformation.backgroundColor = UIColor.lightGray
+        
+        // 設定刪除按鈕的圓角和背景色
+        btnDelete.layer.cornerRadius = 10 // 設置圓角半徑
+        btnDelete.layer.masksToBounds = true // 確保圓角有效果
+        btnDelete.backgroundColor = UIColor.darkGray
     }
     
     
@@ -60,6 +80,19 @@ class AddAlarmViewController: UIViewController {
     
     @IBAction func datePicker(_ sender: Any) {
         
+    }
+    
+    
+    @IBAction func deletePressed(_ sender: Any) {
+        guard isEditingMode, let alarmToDelete = editingAlarm else { return }
+        
+        let realm = try! Realm()
+        try! realm.write {
+            realm.delete(alarmToDelete) // 刪除指定的鬧鐘
+        }
+        
+        delegate?.didSaveAlarm() // 通知主頁面更新
+        dismiss(animated: true, completion: nil) // 關閉當前頁面
     }
     
     // MARK: - Function
@@ -80,22 +113,136 @@ class AddAlarmViewController: UIViewController {
                                       action: #selector(saveAlarm))
         btnSave.tintColor = .orange
         self.navigationItem.rightBarButtonItem = btnSave
-        
     }
+    
     @objc func saveAlarm() {
+        let realm = try! Realm()
+        let identifier: String
         
+        // 使用 DatePicker 選擇的時間格式化為字串
+        let selectedTimeString = formattedCurrentDate(from: dpkClockTime.date)
+        
+        if isEditingMode, let alarmToUpdate = editingAlarm {
+            // 編輯模式：更新現有資料
+            identifier = "\(alarmToUpdate.clockTime)-\(alarmToUpdate.clockTag)"// 假設 `id` 是鬧鐘的唯一標識符，例如 UUID
+            
+            try! realm.write {
+                alarmToUpdate.clockPeriod = formatDate(dpkClockTime.date)
+                alarmToUpdate.clockTime = selectedTimeString
+                alarmToUpdate.clockRepeat = selectedWeekText
+                alarmToUpdate.clockTag = tagName
+                alarmToUpdate.clockSound = selectedSound
+                alarmToUpdate.clockRemLat = AddAlarmViewController.reminderLater
+            }
+            
+            // 移除舊的通知
+            UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier])
+            
+        } else {
+            // 新增模式：創建新的鬧鐘物件
+            identifier = UUID().uuidString // 為新鬧鐘生成唯一的 ID
+            let newAlarm = ClockTime(clockPeriod: formatDate(dpkClockTime.date),
+                                     clockTime: selectedTimeString,
+                                     clockRepeat: selectedWeekText,
+                                     clockTag: tagName,
+                                     clockSound: selectedSound,
+                                     clockRemLat: AddAlarmViewController.reminderLater)
+            
+            try! realm.write {
+                realm.add(newAlarm)
+            }
+            selectedSound = "放射"
+            //sound_value.shared.select = "放射"
+            sound_value.shared.select = selectedSound // 👈 同步單例的預設值
+            
+            selectedWeekText = "永不"
+            day_value.shared.select = []
+            
+        }
+        
+        // 通知主頁面更新鬧鐘列表
+        delegate?.didSaveAlarm()
+        dismiss(animated: true, completion: nil)
+        
+        // 僅為當前鬧鐘創建通知
+        createNotification(for: identifier, time: dpkClockTime.date)
     }
+
     
     // dismiss關閉,返回到之前的畫面
     @objc func backToMain() {
+        selectedWeekText = "永不"
+        day_value.shared.select = []
         dismiss(animated: true, completion: nil)
     }
     
-    func formattedCurrentDate() -> String {
-        let currentData = Date()
+    func formattedCurrentDate(from date: Date) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        return dateFormatter.string(from: currentData)
+        dateFormatter.dateFormat = "h:mm" // 設定所需的時間格式
+        return dateFormatter.string(from: date)
+    }
+    
+    func formatDate(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "zh_TW")
+        dateFormatter.dateFormat = "a"
+        return dateFormatter.string(from: date)
+    }
+    
+    func editMode() {
+        // 根據編輯模式設定刪除按鈕的顯示狀態和標題文字
+        btnDelete.isHidden = !isEditingMode // 若非編輯模式，隱藏刪除按鈕
+        self.title = isEditingMode ? "編輯鬧鐘" : "加入鬧鐘" // 編輯模式顯示「編輯鬧鐘」
+        
+        // 編輯模式使用 alarmTime 更新時間
+        if isEditingMode, let alarm = editingAlarm {
+            // 編輯模式：將當前鬧鐘的資訊顯示在表格中
+            tagName = alarm.clockTag
+            selectedWeekText = alarm.clockRepeat
+            selectedSound = alarm.clockSound // 👈 設定為當前鬧鐘的提示聲
+            tbvInformation.reloadData()
+            
+            // 設置鬧鐘的時間
+            if let alarmTime = alarmTime {
+                dpkClockTime.date = alarmTime // 👈 使用編輯鬧鐘的時間
+            }
+        } else {
+            // 新增模式：使用初始化的值
+            selectedSound = "放射" // 預設值
+            
+            // 新增模式：設置為「永不」並清空 day_value.shared.select
+            selectedWeekText = "永不"
+            //day_value.shared.select.removeAll()
+            
+            dpkClockTime.date = Date() // 👈 新增模式下設置為當前時間
+        }
+    }
+
+    
+    // 通知
+    func createNotification(for identifier: String, time: Date) {
+        let content = UNMutableNotificationContent()
+        content.title = "現在時間"
+        content.subtitle = "\(formattedCurrentDate(from: time))"
+        content.body = ""
+        content.badge = 1
+        content.sound = .default
+
+        // 從 time 取得小時與分鐘的 DateComponents
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.hour, .minute], from: time)
+        print(components)
+
+        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("無法建立通知: \(error)")
+            } else {
+                print("通知成功排程：\(self.formattedCurrentDate(from: time))")
+            }
+        }
     }
 }
 
@@ -106,45 +253,56 @@ extension AddAlarmViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell: UITableViewCell?
         
         switch indexPath.row {
         case 0:
             let repeatCell = tableView.dequeueReusableCell(withIdentifier: RepeatTableViewCell.identifier, for: indexPath) as! RepeatTableViewCell
             repeatCell.textLabel?.text = "重複"
+            repeatCell.textLabel?.textColor = .white
+            repeatCell.lbData.textColor = .lightGray
             // 顯示選擇的星期文字
             repeatCell.lbData.text = selectedWeekText
             repeatCell.lbData.adjustsFontSizeToFitWidth = true
             // 顯示箭頭
             repeatCell.accessoryType = .disclosureIndicator
+            repeatCell.backgroundColor = UIColor.darkGray
             return repeatCell
         case 1:
-            cell = tableView.dequeueReusableCell(withIdentifier: TagTableViewCell.identifier,
-                                                 for: indexPath) as! TagTableViewCell
-            cell?.textLabel?.text = "標籤"
-            return cell!
+            let cell = tableView.dequeueReusableCell(withIdentifier: TagTableViewCell.identifier,for: indexPath) as! TagTableViewCell
+            cell.textLabel?.text = "標籤"
+            cell.textLabel?.textColor = .white
+            cell.txfTag.delegate = self
+            cell.txfTag.text = tagName
+            cell.txfTag.textColor = .lightGray
+            print(tagName)
+            cell.backgroundColor = UIColor.darkGray
+            return cell
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: RepeatTableViewCell.identifier,
-                                                     for: indexPath) as! RepeatTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: RepeatTableViewCell.identifier,for: indexPath) as! RepeatTableViewCell
             cell.textLabel?.text = "提示聲"
-            cell.lbData.text = soundData
+            cell.textLabel?.textColor = .white
+            cell.lbData.textColor = .lightGray
+            cell.lbData.text = selectedSound
             // 從單例讀取選中的聲音
             cell.accessoryType = .disclosureIndicator
+            cell.backgroundColor = UIColor.darkGray
             return cell
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: RemLatTableViewCell.identifier,
-                                                 for: indexPath) as! RemLatTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: RemLatTableViewCell.identifier,for: indexPath) as! RemLatTableViewCell
             cell.textLabel?.text = "稍後提醒"
+            cell.textLabel?.textColor = .white
             if AddAlarmViewController.reminderLater {
                 cell.swReminderLater.isOn = true
             } else {
                 cell.swReminderLater.isOn = false
             }
+            cell.backgroundColor = UIColor.darkGray
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("www")
         if indexPath.row == 0 {
             // 跳轉到 WeekViewController
             let weekVC = WeekViewController()
@@ -154,7 +312,8 @@ extension AddAlarmViewController: UITableViewDelegate, UITableViewDataSource {
         }
         if indexPath.row == 2 {
             let soundVC = SoundViewController()
-            soundVC.delegate = self 
+            soundVC.check = selectedSound
+            soundVC.delegate = self
             self.navigationController?.pushViewController(soundVC, animated: true)
         }
     }
@@ -202,4 +361,17 @@ class reminderLater_switch {
     var reminderLater_select = true
     static let shared = reminderLater_switch()
     private init() {}
+}
+
+// MARK: - Protocol
+protocol AddAlarmViewControllerDelegate: AnyObject {
+    func didSaveAlarm()
+}
+
+extension AddAlarmViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print(textField.text)
+        tagName = textField.text!
+        print(tagName)
+    }
 }

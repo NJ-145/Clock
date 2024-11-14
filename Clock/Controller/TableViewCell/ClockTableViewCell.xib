@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="51" id="KGk-i7-Jjw" customClass="ClockTableViewCell" customModule="Clock" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="324" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="324" height="100"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上午" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6dX-2K-hPf">
+                        <rect key="frame" x="14.999999999999996" y="30" width="48.666666666666657" height="30"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6:50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHn-z8-lCq">
+                        <rect key="frame" x="66.666666666666657" y="17" width="114.66666666666666" height="43"/>
+                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="57"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="鬧鐘" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qvz-QS-OJc">
+                        <rect key="frame" x="15.000000000000002" y="58" width="24.666666666666671" height="40"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cLC-wc-2F9">
+                        <rect key="frame" x="267" y="30" width="49" height="30"/>
+                    </switch>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="LHn-z8-lCq" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.43" id="4oH-dw-gmI"/>
+                    <constraint firstItem="cLC-wc-2F9" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.145062" id="55a-L0-VpI"/>
+                    <constraint firstAttribute="bottom" secondItem="qvz-QS-OJc" secondAttribute="bottom" constant="2" id="6Ui-mc-dqA"/>
+                    <constraint firstItem="cLC-wc-2F9" firstAttribute="bottom" secondItem="LHn-z8-lCq" secondAttribute="bottom" id="IK9-bL-4uj"/>
+                    <constraint firstItem="6dX-2K-hPf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="KNS-Lp-UQY"/>
+                    <constraint firstItem="qvz-QS-OJc" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.4" id="NQz-Gc-Wjy"/>
+                    <constraint firstItem="6dX-2K-hPf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="Nmn-cg-Ql3"/>
+                    <constraint firstItem="LHn-z8-lCq" firstAttribute="leading" secondItem="6dX-2K-hPf" secondAttribute="trailing" constant="3" id="TpN-rJ-NeF"/>
+                    <constraint firstItem="LHn-z8-lCq" firstAttribute="bottom" secondItem="6dX-2K-hPf" secondAttribute="bottom" id="rim-7G-Kjy"/>
+                    <constraint firstItem="qvz-QS-OJc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="v9Z-tQ-tFq"/>
+                    <constraint firstItem="6dX-2K-hPf" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.3" id="xsB-3O-Sok"/>
+                    <constraint firstItem="cLC-wc-2F9" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.3" id="zSW-Mq-MXS"/>
+                    <constraint firstAttribute="trailing" secondItem="cLC-wc-2F9" secondAttribute="trailing" constant="10" id="zzO-SA-Gnf"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="lbPeriod" destination="6dX-2K-hPf" id="eqB-s1-Yts"/>
+                <outlet property="lbRemark" destination="qvz-QS-OJc" id="m0R-Lr-FeU"/>
+                <outlet property="lbTime" destination="LHn-z8-lCq" id="wpH-6W-O0f"/>
+            </connections>
+            <point key="canvasLocation" x="141.98473282442748" y="16.901408450704228"/>
+        </tableViewCell>
+    </objects>
+</document>

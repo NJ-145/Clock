@@ -24,6 +24,11 @@ class WeekViewController: UIViewController {
         super.viewDidLoad()
         setNavigation()
         setUi()
+        
+        // 初始化 selectedWeeks 根據 day_value.shared.select 的內容
+        for index in day_value.shared.select {
+            selectedWeeks[index] = true
+        }
     }
     
     // MARK: - UI Settings
@@ -52,6 +57,7 @@ class WeekViewController: UIViewController {
     @objc func backToAdd() {
         navigationController?.popViewController(animated: true)
         updateDelegate?.updateWeek(week: selectWeek)
+        
     }
 }
 

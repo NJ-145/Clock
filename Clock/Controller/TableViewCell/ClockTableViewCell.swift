@@ -1,17 +1,21 @@
 //
-//  TagTableViewCell.swift
+//  ClockTableViewCell.swift
 //  Clock
 //
-//  Created by imac-2626 on 2024/9/30.
+//  Created by imac-2626 on 2024/10/18.
 //
 
 import UIKit
 
-class TagTableViewCell: UITableViewCell {
+class ClockTableViewCell: UITableViewCell {
 
     
-    @IBOutlet var txfTag: UITextField!
-    static let identifier = "TagTableViewCell"
+    @IBOutlet var lbPeriod: UILabel!
+    
+    @IBOutlet var lbTime: UILabel!
+    
+    @IBOutlet var lbRemark: UILabel!
+    static let identifier = "ClockTableViewCell"
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

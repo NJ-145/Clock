@@ -14,8 +14,7 @@ class SoundViewController: UIViewController {
     
     // MARK: - Property
     let sound: [String] = ["放射(預設值)","小木屋","山谷","水銀","四方","幼苗","庇護"]
-    var check: String = sound_value.shared.select 
-    
+    var check: String = sound_value.shared.select
     weak var delegate: SoundSelectionDelegate?
     
     
@@ -24,6 +23,12 @@ class SoundViewController: UIViewController {
         super.viewDidLoad()
         setUi()
         setNavigation()
+        
+        // 檢查 check 是否有值，如果沒有，將其初始化為「放射(預設值)」
+        if check.isEmpty {
+            check = "放射(預設值)"
+            sound_value.shared.select = check // 👈 同步更新單例
+        }
     }
     
     // MARK: - UI Settings
