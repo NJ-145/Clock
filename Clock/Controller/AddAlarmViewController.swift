@@ -152,8 +152,7 @@ class AddAlarmViewController: UIViewController {
                 realm.add(newAlarm)
             }
             selectedSound = "放射"
-            //sound_value.shared.select = "放射"
-            sound_value.shared.select = selectedSound // 👈 同步單例的預設值
+            sound_value.shared.select = selectedSound // 同步單例的預設值
             
             selectedWeekText = "永不"
             day_value.shared.select = []
@@ -199,12 +198,12 @@ class AddAlarmViewController: UIViewController {
             // 編輯模式：將當前鬧鐘的資訊顯示在表格中
             tagName = alarm.clockTag
             selectedWeekText = alarm.clockRepeat
-            selectedSound = alarm.clockSound // 👈 設定為當前鬧鐘的提示聲
+            selectedSound = alarm.clockSound // 設定為當前鬧鐘的提示聲
             tbvInformation.reloadData()
             
             // 設置鬧鐘的時間
             if let alarmTime = alarmTime {
-                dpkClockTime.date = alarmTime // 👈 使用編輯鬧鐘的時間
+                dpkClockTime.date = alarmTime // 使用編輯鬧鐘的時間
             }
         } else {
             // 新增模式：使用初始化的值
@@ -214,7 +213,7 @@ class AddAlarmViewController: UIViewController {
             selectedWeekText = "永不"
             //day_value.shared.select.removeAll()
             
-            dpkClockTime.date = Date() // 👈 新增模式下設置為當前時間
+            dpkClockTime.date = Date() // 新增模式下設置為當前時間
         }
     }
 
@@ -241,6 +240,9 @@ class AddAlarmViewController: UIViewController {
                 print("無法建立通知: \(error)")
             } else {
                 print("通知成功排程：\(self.formattedCurrentDate(from: time))")
+                
+                // 發送通知更新主畫面
+                NotificationCenter.default.post(name: NSNotification.Name("SwitchStateUpdate"), object: nil)
             }
         }
     }
@@ -288,14 +290,10 @@ extension AddAlarmViewController: UITableViewDelegate, UITableViewDataSource {
             cell.backgroundColor = UIColor.darkGray
             return cell
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: RemLatTableViewCell.identifier,for: indexPath) as! RemLatTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: RemLatTableViewCell.identifier, for: indexPath) as! RemLatTableViewCell
             cell.textLabel?.text = "稍後提醒"
             cell.textLabel?.textColor = .white
-            if AddAlarmViewController.reminderLater {
-                cell.swReminderLater.isOn = true
-            } else {
-                cell.swReminderLater.isOn = false
-            }
+            cell.updateSwitchState(isOn: AddAlarmViewController.reminderLater)
             cell.backgroundColor = UIColor.darkGray
             return cell
         }

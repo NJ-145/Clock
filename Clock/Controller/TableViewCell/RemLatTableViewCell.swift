@@ -23,4 +23,7 @@ class RemLatTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func updateSwitchState(isOn: Bool) {
+            swReminderLater.isOn = isOn
+    }
 }

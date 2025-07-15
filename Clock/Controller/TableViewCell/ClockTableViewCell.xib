@@ -59,6 +59,7 @@
                 <outlet property="lbPeriod" destination="6dX-2K-hPf" id="eqB-s1-Yts"/>
                 <outlet property="lbRemark" destination="qvz-QS-OJc" id="m0R-Lr-FeU"/>
                 <outlet property="lbTime" destination="LHn-z8-lCq" id="wpH-6W-O0f"/>
+                <outlet property="swNotify" destination="cLC-wc-2F9" id="ds9-N0-ZrI"/>
             </connections>
             <point key="canvasLocation" x="141.98473282442748" y="16.901408450704228"/>
         </tableViewCell>

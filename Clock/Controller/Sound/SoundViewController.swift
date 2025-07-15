@@ -27,7 +27,7 @@ class SoundViewController: UIViewController {
         // 檢查 check 是否有值，如果沒有，將其初始化為「放射(預設值)」
         if check.isEmpty {
             check = "放射(預設值)"
-            sound_value.shared.select = check // 👈 同步更新單例
+            sound_value.shared.select = check // 同步更新單例
         }
     }
     
@@ -86,11 +86,7 @@ extension SoundViewController: UITableViewDelegate,UITableViewDataSource {
     }
 }
 
-class sound_value {
-    var select = "放射(預設值)"
-    static let shared = sound_value()
-    private init() {}
-}
+
 
 // MARK: - Protocol
 protocol SoundSelectionDelegate: AnyObject {

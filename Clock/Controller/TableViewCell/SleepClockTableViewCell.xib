@@ -24,11 +24,11 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvB-Bv-6i7">
-                        <rect key="frame" x="261.66666666666669" y="9" width="43.333333333333314" height="26"/>
+                        <rect key="frame" x="252.33333333333334" y="9" width="52.666666666666657" height="26"/>
                         <color key="tintColor" systemColor="systemOrangeColor"/>
                         <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="gray" title="設定" subtitle="">
-                            <fontDescription key="titleFontDescription" type="system" pointSize="9"/>
+                        <buttonConfiguration key="configuration" style="gray" title="設定" subtitle="" cornerStyle="capsule">
+                            <fontDescription key="titleFontDescription" type="system" pointSize="12"/>
                             <color key="baseBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </buttonConfiguration>
                         <userDefinedRuntimeAttributes>
@@ -41,7 +41,7 @@
                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="bvB-Bv-6i7" firstAttribute="centerY" secondItem="hUh-Qz-JWK" secondAttribute="centerY" id="0cZ-hz-EG0"/>
-                    <constraint firstItem="bvB-Bv-6i7" firstAttribute="width" secondItem="hUh-Qz-JWK" secondAttribute="width" multiplier="0.9" id="5Eh-ga-y2G"/>
+                    <constraint firstItem="bvB-Bv-6i7" firstAttribute="width" secondItem="hUh-Qz-JWK" secondAttribute="width" multiplier="1.1" id="5Eh-ga-y2G"/>
                     <constraint firstAttribute="trailing" secondItem="bvB-Bv-6i7" secondAttribute="trailing" constant="15" id="FCl-eu-AkL"/>
                     <constraint firstItem="hUh-Qz-JWK" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="XGK-qs-NhK"/>
                     <constraint firstItem="bvB-Bv-6i7" firstAttribute="height" secondItem="hUh-Qz-JWK" secondAttribute="height" multiplier="1.2381" id="ZaD-ke-xpv"/>
@@ -56,7 +56,7 @@
     </objects>
     <resources>
         <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

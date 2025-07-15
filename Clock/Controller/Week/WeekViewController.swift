@@ -104,10 +104,4 @@ protocol Updatedelegate: AnyObject{
     func updateWeek(week: [String])
 }
 
-class day_value {
-    // 儲存被選中的天數
-    var select = [Int]()
-    static let shared = day_value()
-    // 讓這個類別無法被外部初始化，強制讓外部只能使用 shared 這個單例物件
-    private init() {}
-}
+

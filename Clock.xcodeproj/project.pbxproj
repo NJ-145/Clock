@@ -40,6 +40,7 @@
 		7CD346CE2CAAC2900081DE1A /* TagTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CD346CC2CAAC2900081DE1A /* TagTableViewCell.xib */; };
 		7CD346D12CAAC2E00081DE1A /* RemLatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD346CF2CAAC2E00081DE1A /* RemLatTableViewCell.swift */; };
 		7CD346D22CAAC2E00081DE1A /* RemLatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7CD346D02CAAC2E00081DE1A /* RemLatTableViewCell.xib */; };
+		7CD42B232CEC8D4B000CE32B /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD42B222CEC8D4B000CE32B /* Singleton.swift */; };
 		7CDBC2CC2CA177EA002876C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDBC2CB2CA177EA002876C4 /* AppDelegate.swift */; };
 		7CDBC2CE2CA177EA002876C4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDBC2CD2CA177EA002876C4 /* SceneDelegate.swift */; };
 		7CDBC2D52CA177ED002876C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CDBC2D42CA177ED002876C4 /* Assets.xcassets */; };
@@ -111,6 +112,7 @@
 		7CD346CC2CAAC2900081DE1A /* TagTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TagTableViewCell.xib; sourceTree = "<group>"; };
 		7CD346CF2CAAC2E00081DE1A /* RemLatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemLatTableViewCell.swift; sourceTree = "<group>"; };
 		7CD346D02CAAC2E00081DE1A /* RemLatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RemLatTableViewCell.xib; sourceTree = "<group>"; };
+		7CD42B222CEC8D4B000CE32B /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		7CDBC2C82CA177EA002876C4 /* Clock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CDBC2CB2CA177EA002876C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CDBC2CD2CA177EA002876C4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 			children = (
 				7CAB318A2CAFE268003D28D1 /* Data.swift */,
 				7CEE457E2CBFB82400A3E762 /* User.swift */,
+				7CD42B222CEC8D4B000CE32B /* Singleton.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -625,6 +628,7 @@
 				7C96EADF2CC27CFA00BA116B /* ClockTableViewCell.swift in Sources */,
 				7CB099792CABF4A500936695 /* TabBarViewController.swift in Sources */,
 				7CAB318B2CAFE268003D28D1 /* Data.swift in Sources */,
+				7CD42B232CEC8D4B000CE32B /* Singleton.swift in Sources */,
 				7CD346D12CAAC2E00081DE1A /* RemLatTableViewCell.swift in Sources */,
 				7CDBC30E2CA54C34002876C4 /* AddAlarmViewController.swift in Sources */,
 				7C644E3C2CBE66C90079E305 /* SoundViewController.swift in Sources */,
